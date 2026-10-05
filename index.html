@@ -284,6 +284,27 @@
             .brand-block .logo img { height: 32px; }
         }
 
+        /* Đổi banner riêng cho điện thoại */
+        @media (max-width: 768px) {
+            .hero-section {
+                background: url('https://vnteco.com/wp-content/uploads/2024/07/Banner-640x580-1.jpg') center/cover !important;
+                aspect-ratio: 640 / 580 !important;
+            }
+        }
+
+        .mobile-cta-btn {
+            display: block;
+            text-align: center;
+            background: #e8d1a7;
+            color: #0d5214 !important;
+            font-weight: 700;
+            padding: 12px 20px !important;
+            margin: 15px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+        .mobile-cta-btn:hover { background: #d4b57e; color: #fff !important; }
+
         .hero-section {
             width: 100%;
             aspect-ratio: 1920 / 656; 
@@ -444,6 +465,7 @@
                 </li>
                 <li><a href="#">Nhà lắp ghép</a></li>
                 <li><a href="#">Tin tức</a></li>
+                <li><a href="#" class="mobile-cta-btn">Liên hệ</a></li>
             </ul>
         </div>
     </div>
