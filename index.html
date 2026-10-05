@@ -200,20 +200,39 @@
         }
         .mobile-social-menu {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 15px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
             background: #f0f7f2;
             border-bottom: 1px solid #eaeaea;
         }
-        .mobile-social-menu i { font-size: 20px; color: #197a1d; }
+        .mobile-social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .mobile-social-icons i { font-size: 18px; color: #197a1d; }
         
+        .mobile-top-cta {
+            background: #e8d1a7;
+            color: #0d5214 !important;
+            font-weight: 700;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+        .mobile-top-cta:hover { background: #d4b57e; color: #fff !important; }
+
         .mobile-nav-list { list-style: none; padding: 0; margin: 0; }
         .mobile-nav-list > li { border-bottom: 1px solid #eaeaea; }
         .mobile-nav-list > li > a, .mobile-nav-list > li > div.mobile-sub-toggle {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 20px; color: #333; text-decoration: none; font-size: 15px;
+            padding: 15px 20px; color: #333; text-decoration: none; font-size: 14px;
             cursor: pointer;
+            text-transform: uppercase; /* Yêu cầu viết hoa */
+            font-weight: 500;
         }
         .mobile-nav-list > li > a:hover, .mobile-sub-toggle:hover { color: #197a1d; }
         
@@ -222,6 +241,7 @@
         .mobile-sub-menu li a { 
             display: block; padding: 12px 20px 12px 40px; color: #555; 
             text-decoration: none; font-size: 14px; border-top: 1px solid #f0f0f0;
+            text-transform: none; /* Các mục con có thể giữ nguyên hoặc viết hoa tùy ý, tạm giữ nguyên theo ảnh mẫu */
         }
         .mobile-sub-menu li a:hover { color: #197a1d; }
         .fa-chevron-down { transition: transform 0.3s; }
@@ -229,9 +249,8 @@
         /* --- RESPONSIVE MOBILE & TABLET --- */
         @media (max-width: 1024px) {
             .nav-menu, .cta-btn { display: none; }
-            .top-bar .social { display: none; } /* Giấu social ở top-bar trên mobile */
+            .top-bar .social { display: none; } 
 
-            /* Hiển thị lại Top-bar và thêm hiệu ứng chữ chạy (marquee) cho 1 dòng */
             .top-bar { height: auto; padding: 10px 0; overflow: hidden; }
             .top-bar .container { flex-direction: column; gap: 8px; align-items: center; width: 100%; }
             .top-bar .contact { 
@@ -241,20 +260,18 @@
                 animation: marqueeText 15s linear infinite;
             }
             .top-bar .contact span { margin: 0 15px; font-size: 13px; display: inline-block; }
-            .mobile-copy { display: inline-block; } /* Hiện bản sao trên mobile */
+            .mobile-copy { display: inline-block; } 
 
             @keyframes marqueeText {
                 0% { transform: translateX(0); }
                 100% { transform: translateX(-50%); }
             }
             
-            /* Đổi nền toàn bộ header sang xanh */
             .main-header { 
                 background: linear-gradient(90deg, #0d5214 0%, #197a1d 100%); 
                 height: 70px;
             }
             
-            /* Xóa background khối logo để hòa vào header xanh */
             .brand-block {
                 background: transparent;
                 padding: 0;
@@ -263,7 +280,6 @@
             .brand-block::before { display: none; }
             .brand-block .logo img { height: 40px; }
 
-            /* Thanh tìm kiếm */
             .search-bar { 
                 flex: 1; 
                 width: auto; 
@@ -275,7 +291,6 @@
             }
             .search-bar i { color: #555; }
 
-            /* Hiện nút Hamburger Menu */
             .mobile-menu-btn { display: flex; }
         }
 
@@ -291,19 +306,6 @@
                 aspect-ratio: 640 / 580 !important;
             }
         }
-
-        .mobile-cta-btn {
-            display: block;
-            text-align: center;
-            background: #e8d1a7;
-            color: #0d5214 !important;
-            font-weight: 700;
-            padding: 12px 20px !important;
-            margin: 15px;
-            border-radius: 6px;
-            text-transform: uppercase;
-        }
-        .mobile-cta-btn:hover { background: #d4b57e; color: #fff !important; }
 
         .hero-section {
             width: 100%;
@@ -324,7 +326,6 @@
                 <span>Email: <a href="mailto:nguyenhauvnteco@gmail.com">nguyenhauvnteco@gmail.com</a></span>
                 <span>Hotline/Zalo: <strong style="color:red;">0909 45 0909</strong></span>
                 <span>SĐT công ty: <strong>028 3842 6999</strong></span>
-                <!-- Bản sao để tạo vòng lặp vô tận mượt mà trên Mobile -->
                 <span class="mobile-copy">Email: <a href="mailto:nguyenhauvnteco@gmail.com">nguyenhauvnteco@gmail.com</a></span>
                 <span class="mobile-copy">Hotline/Zalo: <strong style="color:red;">0909 45 0909</strong></span>
                 <span class="mobile-copy">SĐT công ty: <strong>028 3842 6999</strong></span>
@@ -419,11 +420,13 @@
 
         <!-- Khung Menu hiển thị khi bấm trên Mobile -->
         <div class="mobile-menu-overlay" id="mobileMenu">
-            <!-- Icon mạng xã hội được dời vào đây -->
             <div class="mobile-social-menu">
-                <i class="fab fa-facebook-f" title="Facebook"></i>
-                <i class="fab fa-youtube" title="Youtube"></i>
-                <i class="fab fa-google-plus-g" title="Google"></i>
+                <div class="mobile-social-icons">
+                    <i class="fab fa-facebook-f" title="Facebook"></i>
+                    <i class="fab fa-youtube" title="Youtube"></i>
+                    <i class="fab fa-google-plus-g" title="Google"></i>
+                </div>
+                <a href="#" class="mobile-top-cta">Liên hệ</a>
             </div>
             
             <ul class="mobile-nav-list">
@@ -465,7 +468,6 @@
                 </li>
                 <li><a href="#">Nhà lắp ghép</a></li>
                 <li><a href="#">Tin tức</a></li>
-                <li><a href="#" class="mobile-cta-btn">Liên hệ</a></li>
             </ul>
         </div>
     </div>
